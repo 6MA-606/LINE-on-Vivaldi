@@ -6,6 +6,7 @@ EXT_PATH="$HOME/.config/vivaldi/Default/Extensions/$EXT_ID"
 ICON_PATH="/usr/share/icons/hicolor/256x256/apps/line-vivaldi.png"
 DESKTOP_FILE="/usr/share/applications/line-vivaldi.desktop"
 VIVALDI_DEB="vivaldi-stable_amd64.deb"
+CONFIG_DIR="$HOME/.config/vivaldi"
 
 # === Function to remove LINE extension ===
 remove_line_extension() {
@@ -28,13 +29,36 @@ remove_vivaldi() {
             sudo apt-get remove --purge vivaldi-stable -y
             sudo apt-get autoremove -y
             echo "✅ Vivaldi removed."
+
+            echo "🧹 Do you want to remove Vivaldi config files as well? (y/n)"
+            read -r REMOVE_CONFIG
+            if [[ "$REMOVE_CONFIG" == "y" || "$REMOVE_CONFIG" == "Y" ]]; then
+                rm -rf "$CONFIG_DIR"
+                echo "✅ Config files removed."
+            fi
+
         else
             echo "❌ Vivaldi will not be removed."
         fi
     else
         echo "❌ Vivaldi is not installed."
     fi
+    
 }
+
+# === Check if Vivaldi is running and prompt to close ===
+if pgrep -x "vivaldi-stable" > /dev/null; then
+    echo "⚠️ Vivaldi is running. Do you want to close it automatically? (y/n)"
+    read -r CLOSE_VIVALDI
+    if [[ "$CLOSE_VIVALDI" == "y" || "$CLOSE_VIVALDI" == "Y" ]]; then
+        pkill -x "vivaldi-stable"
+        sleep 1
+    else
+        echo "❌ Please close Vivaldi manually and try again."
+        exit 1
+    fi
+fi
+
 
 # === Prompt to remove LINE extension ===
 echo "🧩 Do you want to remove the LINE extension from Vivaldi? (y/n)"
