@@ -12,7 +12,13 @@ CONFIG_DIR="$HOME/.config/vivaldi"
 remove_line_extension() {
     if [ -d "$EXT_PATH" ]; then
         echo "🧩 Removing LINE extension..."
-        rm -rf "$EXT_PATH"
+        rm -rf "$VIVALDI_PROFILE/Extensions/$EXT_ID"
+        rm -rf "$VIVALDI_PROFILE/Extension State/$EXT_ID"
+        rm -rf "$VIVALDI_PROFILE/Local Extension Settings/$EXT_ID"
+
+        sed -i "/$EXT_ID/d" "$VIVALDI_PROFILE/Preferences"
+        sed -i "/$EXT_ID/d" "$VIVALDI_PROFILE/Secure Preferences"
+
         echo "✅ LINE extension removed."
     else
         echo "❌ LINE extension not found."
