@@ -73,15 +73,13 @@ fi
 remove_vivaldi
 
 # === Remove .desktop file and icon ===
-echo "🧹 Do you want to remove the launcher shortcut and icon? (y/n)"
-read -r REMOVE_SHORTCUT
-if [[ "$REMOVE_SHORTCUT" =~ ^[yY]$ ]]; then
+if [[ -f "$DESKTOP_FILE" || -f "$ICON_PATH" ]]; then
     echo "🧹 Removing .desktop shortcut and icon..."
     sudo rm -f "$DESKTOP_FILE"
     sudo rm -f "$ICON_PATH"
     echo "✅ Shortcut and icon removed."
 else
-    echo "❌ Shortcut and icon will not be removed."
+    echo "❌ Shortcut or icon not found."
 fi
 
 # === Clean up any remaining files ===

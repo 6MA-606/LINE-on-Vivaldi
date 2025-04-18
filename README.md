@@ -11,11 +11,15 @@ This is a adaptation of LINE extension for chromium-based browsers and Vivaldi b
 ## How to install - Ubuntu/Debian
 Run the following command in your terminal:
 ```bash
-curl -sSL https://raw.githubusercontent.com/6MA-606/LINE-on-Vivaldi/refs/heads/main/install.sh | sudo bash
+curl -sSL -o install.sh https://raw.githubusercontent.com/6MA-606/LINE-on-Vivaldi/refs/heads/main/install.sh && \
+chmod +x install.sh && \
+./install.sh
 ```
 
 ## How to uninstall
 Run the following command in your terminal:
 ```bash
-curl -sSL https://raw.githubusercontent.com/6MA-606/LINE-on-Vivaldi/refs/heads/main/uninstall.sh | sudo bash
+curl -sSL -o uninstall.sh https://raw.githubusercontent.com/6MA-606/LINE-on-Vivaldi/refs/heads/main/uninstall.sh && \
+chmod +x uninstall.sh && \
+./uninstall.sh
 ```
