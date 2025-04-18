@@ -53,7 +53,7 @@ remove_vivaldi() {
 }
 
 # === Check if Vivaldi is running and prompt to close ===
-if pgrep "vivaldi" > /dev/null; then
+if pgrep -x "vivaldi" > /dev/null; then
     echo "⚠️ Vivaldi is running. Do you want to close it automatically? (y/n)"
     read -r CLOSE_VIVALDI
     if [[ "$CLOSE_VIVALDI" =~ ^[yY]$ ]]; then
