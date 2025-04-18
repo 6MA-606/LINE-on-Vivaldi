@@ -10,7 +10,7 @@ CONFIG_DIR="$HOME/.config/vivaldi"
 
 # === Function to remove LINE extension ===
 remove_line_extension() {
-    if [ -d "$EXT_PATH" ]; then
+    if [ -d "$VIVALDI_PROFILE/Extensions/$EXT_ID" ]; then
         echo "🧩 Removing LINE extension..."
         rm -rf "$VIVALDI_PROFILE/Extensions/$EXT_ID"
         rm -rf "$VIVALDI_PROFILE/Extension State/$EXT_ID"
