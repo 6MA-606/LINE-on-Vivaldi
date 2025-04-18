@@ -32,7 +32,7 @@ remove_vivaldi() {
 
             echo "🧹 Do you want to remove Vivaldi config files as well? (y/n)"
             read -r REMOVE_CONFIG
-            if [[ "$REMOVE_CONFIG" == "y" || "$REMOVE_CONFIG" == "Y" ]]; then
+            if [[ "$REMOVE_CONFIG" =~ ^[yY]$ ]]; then
                 rm -rf "$CONFIG_DIR"
                 echo "✅ Config files removed."
             fi
@@ -50,7 +50,7 @@ remove_vivaldi() {
 if pgrep -x "vivaldi-stable" > /dev/null; then
     echo "⚠️ Vivaldi is running. Do you want to close it automatically? (y/n)"
     read -r CLOSE_VIVALDI
-    if [[ "$CLOSE_VIVALDI" == "y" || "$CLOSE_VIVALDI" == "Y" ]]; then
+    if [[ "$CLOSE_VIVALDI" =~ ^[yY]$ ]]; then
         pkill -x "vivaldi-stable"
         sleep 1
     else
@@ -63,7 +63,7 @@ fi
 # === Prompt to remove LINE extension ===
 echo "🧩 Do you want to remove the LINE extension from Vivaldi? (y/n)"
 read -r REMOVE_LINE
-if [[ "$REMOVE_LINE" == "y" || "$REMOVE_LINE" == "Y" ]]; then
+if [[ "$REMOVE_LINE" =~ ^[yY]$ ]]; then
     remove_line_extension
 else
     echo "❌ LINE extension will not be removed."
@@ -75,7 +75,7 @@ remove_vivaldi
 # === Remove .desktop file and icon ===
 echo "🧹 Do you want to remove the launcher shortcut and icon? (y/n)"
 read -r REMOVE_SHORTCUT
-if [[ "$REMOVE_SHORTCUT" == "y" || "$REMOVE_SHORTCUT" == "Y" ]]; then
+if [[ "$REMOVE_SHORTCUT" =~ ^[yY]$ ]]; then
     echo "🧹 Removing .desktop shortcut and icon..."
     sudo rm -f "$DESKTOP_FILE"
     sudo rm -f "$ICON_PATH"
