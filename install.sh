@@ -25,7 +25,7 @@ fi
 # === Launch Vivaldi to install LINE extension ===
 if [ ! -d "$EXT_PATH" ]; then
     echo "🧩 Launching Vivaldi to install LINE extension..."
-    nohup vivaldi-stable "https://chrome.google.com/webstore/detail/line/$EXT_ID" >/dev/null 2>&1 &
+    vivaldi-stable "https://chrome.google.com/webstore/detail/line/$EXT_ID" --window-size=800,600 &
     echo "⌛ Please install the LINE extension manually. Waiting for it to appear..."
 
     while [ ! -d "$EXT_PATH" ]; do
