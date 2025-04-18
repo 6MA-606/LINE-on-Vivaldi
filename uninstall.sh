@@ -86,7 +86,6 @@ fi
 
 # === Clean up any remaining files ===
 echo "🧹 Cleaning up..."
-# You can add any other specific files or directories to remove if necessary.
-# For now, no extra files to remove.
+rm -f ./uninstall.sh
 
 echo "🎉 Uninstall process completed!"
