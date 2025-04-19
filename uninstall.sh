@@ -14,6 +14,9 @@ remove_line_extension() {
         rm -rf "$VIVALDI_PROFILE/Extensions/$EXT_ID"
         rm -rf "$VIVALDI_PROFILE/Local Extension Settings/$EXT_ID"
 
+        sed -i "/$EXT_ID/d" "$VIVALDI_PROFILE/Preferences" 2>/dev/null
+        sed -i "/$EXT_ID/d" "$VIVALDI_PROFILE/Secure Preferences" 2>/dev/null
+
         echo "✅ LINE extension removed."
     else
         echo "❌ LINE extension not found."
