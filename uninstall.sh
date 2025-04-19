@@ -6,18 +6,13 @@ VIVALDI_PROFILE="$HOME/.config/vivaldi/Default"
 ICON_PATH="/usr/share/icons/hicolor/256x256/apps/line-vivaldi.png"
 DESKTOP_FILE="/usr/share/applications/line-vivaldi.desktop"
 VIVALDI_DEB="vivaldi-stable_amd64.deb"
-CONFIG_DIR="$HOME/.config/vivaldi"
 
 # === Function to remove LINE extension ===
 remove_line_extension() {
     if [ -d "$VIVALDI_PROFILE/Extensions/$EXT_ID" ]; then
         echo "🧩 Removing LINE extension..."
         rm -rf "$VIVALDI_PROFILE/Extensions/$EXT_ID"
-        rm -rf "$VIVALDI_PROFILE/Extension State/$EXT_ID"
         rm -rf "$VIVALDI_PROFILE/Local Extension Settings/$EXT_ID"
-
-        sed -i "/$EXT_ID/d" "$VIVALDI_PROFILE/Preferences" 2>/dev/null
-        sed -i "/$EXT_ID/d" "$VIVALDI_PROFILE/Secure Preferences" 2>/dev/null
 
         echo "✅ LINE extension removed."
     else
