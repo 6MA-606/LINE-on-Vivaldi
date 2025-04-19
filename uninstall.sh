@@ -12,6 +12,7 @@ remove_line_extension() {
     if [ -d "$VIVALDI_PROFILE/Extensions/$EXT_ID" ]; then
         echo "🧩 Removing LINE extension..."
         rm -rf "$VIVALDI_PROFILE/Extensions/$EXT_ID"
+        rm -rf "$VIVALDI_PROFILE/Extension State/$EXT_ID"
         rm -rf "$VIVALDI_PROFILE/Local Extension Settings/$EXT_ID"
 
         sed -i "/$EXT_ID/d" "$VIVALDI_PROFILE/Preferences" 2>/dev/null
